@@ -128,7 +128,8 @@ extension PBPopupCloseButtonStyle
         if self.style == .round {
             self.setupForRoundButton()
         } else {
-            self.setupForChevronButton()
+//            self.setupForChevronButton()
+            self.setupForLineButton()
         }
         accessibilityLabel = NSLocalizedString("Close", comment: "")
         accessibilityHint = NSLocalizedString("Double tap to close popup content", comment: "")
@@ -189,6 +190,15 @@ extension PBPopupCloseButtonStyle
                 addSubview(aView)
             }
         }
+    }
+    
+    private func setupForLineButton()
+    {
+        let lineBtn = UIView(frame: CGRect(x: 0, y: 0, width: 36, height: 5))
+        lineBtn.layer.cornerRadius = 2.5
+        lineBtn.layer.masksToBounds = true
+        lineBtn.backgroundColor = UIColor(white: 1, alpha: 0.3)
+        addSubview(lineBtn)
     }
     
     private func setupForChevronButton()
@@ -269,7 +279,7 @@ extension PBPopupCloseButtonStyle
         if self.style == .round {
             return
         }
-        self.chevronView.state = .up
+//        self.chevronView.state = .up
     }
     
     @objc public func setButtonStateTransitioning()
@@ -277,7 +287,7 @@ extension PBPopupCloseButtonStyle
         if self.style == .round {
             return
         }
-        self.chevronView.state = .flat
+//        self.chevronView.state = .flat
     }
     
     // MARK: - Actions
